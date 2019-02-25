@@ -1,6 +1,5 @@
-var session=require('express-session');
-var Products=require('./models').Products;
 var Users=require('./models').Users;
+const mongoose=require('mongoose');
 module.exports.buy_a_product=
 (req,res)=>
 {
