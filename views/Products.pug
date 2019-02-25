@@ -1,0 +1,35 @@
+doctype html
+html
+    head
+        style
+            include styleProducts.css
+        script(src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js")
+        script(src="/public/javascripts/products.js")
+    body
+        div(class="container" id="container")
+            h1 Product of THE BITSIAN GROUP
+            header
+                img.back_image(src="http://localhost:3001/www/index.jpeg")
+                .header_content "A perfect place to sell your products or buy what others are selling. Whether you are shifting or you think your products still have life"
+            for product in arrayProducts
+                //console.log(arrayProducts)
+                div(class="box")
+                    //-var product_image= (product.itemImage.data).toString('base64')
+                    //-var type=product.itemImage.contentType
+                    //console.log(product_image)
+                    .image_cover
+                        -var imageLocation="http://localhost:3001/public/assets/images/"+product.itemImage
+                        -var productId=product.itemId
+                        img(src=imageLocation)    
+                    .contents
+                        p() This is a basic pug file
+                        p() Name Of Product:  #{product.itemName}
+                        p() Name Of Seller:  #{product.sellerName}
+                        p() Email Of Seller:  #{product.sellerEmail}
+                        p() Product Description:  #{product.itemDescription}
+                        p() Quantity Of Product#{product.itemQuantity}
+                        button(id=productId value="Add To Cart")
+            else  
+                p There are no Products added till now.
+            
+            

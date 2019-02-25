@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Products</title>
+   
+    <head>
+    <body>
+        <header class="header-primary">
+            <div class="container">
+                <p class="header-text">Products Section</p>
+                <div class="header-image">
+                    <p class="header-image-text">SELL YOUR CRAFTED GOODIES TO THE BITSIAN AND AROUND THE WORLD</p>
+                    <p class="header-image-text">GENERATE FUNDS FOR YOU PROJECTS</p>
+                    <p class="header-image-text">BUY EXCLUSIVE BITSIAN MERCHANDISE</p>    
+                </div>
+                <nav class="nav-primary">
+                        <ul class="nav-list">
+                            <li>Add Products</li>
+                            <li>Buy Products</li>
+                        </ul>
+                </nav>
+            </div>
+        </header>
+        <main class="addProducts">
+
+">
+            <div class="form-container">
+                <form action = "http://localhost:3001/addToCart" method = "POST" target="_self" enctype="multipart/form-data" >
+
+                    <div>
+                        <label for="seller_name">Name :</label>
+                        <input type="text" name="seller_name" id="seller_name">
+                    </div>
+                    <div>
+                            <label for="seller_Email">Email</label>
+                            <input name="seller_Email" id="seller_Email" type="email">  
+                        </div>
+                    <div>
+                        <label for="product_name">Product Name</label>
+                        <input type="text" name="product_name" id="product_name">
+                    </div>
+                    <div>
+                        <label for="product_description">Product Description:</label>
+                        <textarea name="product_description" rows="5" cols="70" id="product_description"></textarea>
+                    </div>
+                    <div>
+                        <label for="item_Quantity">Item Quantity</label>
+                        <input name="item_Quantity" id="item_Quantity" type="number">  
+                    </div>
+                    <div>
+                            <label for="input_image">Image</label>   
+                            <input type="file" name="input_image" id="input_image">
+                    </div>
+                    <div>
+                            <input type="submit">
+                    </div>
+                </form>
+            </div>
+        </main>
+        
+    </body>
+</html>

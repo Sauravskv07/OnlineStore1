@@ -1,0 +1,21 @@
+doctype html
+html
+    head
+        meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+    body
+        h1 Sign UP
+        form(method='POST' action='' enctype="multipart/form-data" )
+            div
+                label(for="user_name") Name:
+                input#user_name.form-control(type='text', placeholder='Shah rukh, Rajesh etc.' name="user_name" value=(undefined===userInput ? '' : userInput.userName))
+            div
+                label(for='user_password') Password:
+                input#user_password.form-control(type='password',  name='user_password' value=(undefined===userInput ? '' : userInput.userPassword))
+
+            button.btn.btn-primary(type='submit') Submit
+
+        if errors 
+            ul
+            for error in errors
+                li!= error.msg
+    

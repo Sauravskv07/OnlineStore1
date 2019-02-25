@@ -1,0 +1,36 @@
+doctype html
+html
+    head
+        meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+    body
+        h1 Sign UP
+        form(method='POST' action='' enctype="multipart/form-data" )
+            div
+                label(for="user_name") Name:
+                input#user_name.form-control(type='text', placeholder='Shah rukh, Rajesh etc.' name="user_name" value=(undefined===userInput ? '' : userInput.userName))
+            div
+                label(for='user_email') Email:
+                input#user_email.form-control(type='email', placeholder='Shah@gmail.com' name='user_email'  value=(undefined===userInput ? '' : userInput.userEmail))
+            div
+                label(for='user_password') Password:
+                input#user_password.form-control(type='password',  name='user_password' value=(undefined===userInput ? '' : userInput.userPassword))
+            div
+                label(for='user_phone') Mobile Number:
+                input#user_form.form-control(type='text', placeholder='123456789' name='user_phone' value=(undefined===userInput ? '' : userInput.userPhoneNumber))
+            div
+                label(for='user_street_no') Street Number:
+                input#user_street_no.form-control(type='number', placeholder='12,14 etc.' name='user_street_no' value=(undefined===userInput ? '' : userInput.userDeliveryAddress.StreetNumber))
+            div
+                label(for='user_address') Address Line 1:
+                input#user_address.form-control(type='text', placeholder='saket, pallavpuram' name='user_address' value=(undefined===userInput ? '' : userInput.userDeliveryAddress.AddressLine1))
+            div
+                label(for='user_city') City:
+                input#user_city.form-control(type='text', placeholder='meerut , vishakhapatnam etc.' name='user_address' value=(undefined===userInput ? '' : userInput.userDeliveryAddress.CityName))
+        
+            button.btn.btn-primary(type='submit') Submit
+
+        if errors 
+            ul
+            for error in errors
+                li!= error.msg
+    
