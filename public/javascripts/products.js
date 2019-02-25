@@ -36,7 +36,19 @@ $(document).ready(()=>
     }
     $("button").click(function()
     {
-        console.log('The product name is '+this.id );
+        console.log(this.id);
+        $.ajax({
+            url: 'http://localhost:3001/BuyAProduct',
+            type: 'POST',
+            datatype: JSON,
+            data:{itemBought:this.id},
+            processData: false,
+         })
+        .done(function(data) 
+        {
+            console.log('added to your cart');
+        })
+        .fail(function() {alert("error");});        
     });
     window.onscroll=yscroll;
 });

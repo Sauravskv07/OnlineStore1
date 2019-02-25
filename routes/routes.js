@@ -2,7 +2,7 @@ Products=require('./models').Products;
 const fs=require('fs');
 var multer = require('multer');
 var pug=require('pug');
-var upload = multer({ dest: '/home/sauravskv/Desktop/Snippets_to_my_Dream/dynamic_Products/public/assets/images' });
+var upload = multer({ dest: '/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/public/assets/images' });
 const signup=require('./signUp.js').signup_create_post;
 const viewProducts=require('./displayProducts').viewProducts;
 function routes(app)
@@ -11,7 +11,7 @@ function routes(app)
         	{
 			const filename=req.file.filename;
 			console.log(req.file.mimetype);
-			var product_image=fs.readFileSync("/home/sauravskv/Desktop/Snippets_to_my_Dream/dynamic_Products/public/assets/images/"+filename);	
+			var product_image=fs.readFileSync("/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/public/assets/images/"+filename);	
 			product_image=new Buffer(product_image,'base64');
 			//console.log(product_image.toString());
 			//var product_image= new Buffer(product_image).toString('base64');
@@ -45,17 +45,17 @@ function routes(app)
         		});
 			});
 		app.get('/addToCart',(req,res)=>{
-			res.sendFile('/home/sauravskv/Desktop/Snippets_to_my_Dream/dynamic_Products/views/addToCart.html');
+			res.sendFile('/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views/addToCart.html');
 			});
 		app.get('/home',(req,res)=>{
-				res.sendFile('/home/sauravskv/Desktop/Snippets_to_my_Dream/dynamic_Products/views/home.html');
+				res.sendFile('/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views/home.html');
 			});
 		app.get('/signup',(req,res)=>{
-				res.render('/home/sauravskv/Desktop/Snippets_to_my_Dream/dynamic_Products/views/signUp.pug');
+				res.render('/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views/signUp.pug');
 			});
 		app.post('/signup',signup);
 		app.get('/login',(req,res)=>{
-				res.sendFile('home/sauravskv/Desktop/Snippets_to_my_Dream/dynamic_Products/views/login.html');
+				res.sendFile('home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views/login.html');
 			});
 		app.get('/Products',viewProducts);
 		app.get('/myCart',(req,res)=>{});

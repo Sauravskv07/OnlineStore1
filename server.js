@@ -17,10 +17,10 @@ var session=require('express-session');
 var signup_create_post=require('./routes/signUp.js').signup_create_post;
 
 //app.set('port', 3004);
-app.set('views', '/home/sauravskv/Desktop/Snippets_to_my_Dream/MainLyDone/views') ;// The directory the templates are stored in
+app.set('views', '/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views') ;// The directory the templates are stored in
 app.set('view engine', 'pug');
 
-mongoose.connect('mongodb://localhost/MainLyDone');
+mongoose.connect('mongodb://localhost/Makingthecart');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/www', express.static(__dirname + '/www'));
@@ -57,7 +57,7 @@ var user_login_get=[
     },
     (req,res)=>
     {
-        res.render('//home/sauravskv/Desktop/Snippets_to_my_Dream/MainLyDone/views/login.pug');
+        res.render('//home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views/login.pug');
     }
 ];
 
@@ -84,16 +84,16 @@ var user_login_post=[
             if(error)
                 {
                 console.log("There has been an error while getting the records");
-                res.render("//home/sauravskv/Desktop/Snippets_to_my_Dream/MainLyDone/views/login.pug",{errors:["There has been an error while getting the records"],userInput:user_attempt});
+                res.render("//home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views/login.pug",{errors:["There has been an error while getting the records"],userInput:user_attempt});
                 }
             else if (!user) 
                 {
-                    res.render("//home/sauravskv/Desktop/Snippets_to_my_Dream/MainLyDone/views/login.pug",{errors:["Invalid Username/ Password"],userInput:user_attempt});
+                    res.render("//home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views/login.pug",{errors:["Invalid Username/ Password"],userInput:user_attempt});
                 }
             else if (user.userPassword!=user_attempt.password) 
             {
                 console.log('INcorrect password');
-                res.render("/home/sauravskv/Desktop/Snippets_to_my_Dream/MainLyDone/views/login.pug",{errors:["Invalid User Name/ Password"],userInput:user_attempt});
+                res.render("/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views/login.pug",{errors:["Invalid User Name/ Password"],userInput:user_attempt});
             } 
             else 
             {
@@ -143,13 +143,13 @@ product.save((error,results)=>
     });
 });
 app.get('/addToProducts',(req,res)=>{
-res.sendFile('/home/sauravskv/Desktop/Snippets_to_my_Dream/MainLyDone/views/addToProducts.html');
+res.sendFile('/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views/addToProducts.html');
 });
 app.get('/home',(req,res)=>{
-    res.sendFile('/home/sauravskv/Desktop/Snippets_to_my_Dream/MainLyDone/views/home.html');
+    res.sendFile('/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views/home.html');
 });
 app.get('/signup',(req,res)=>{
-    res.render('/home/sauravskv/Desktop/Snippets_to_my_Dream/MainLyDone/views/signUp.pug');
+    res.render('/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views/signUp.pug');
 });
 app.post('/signup',signup_create_post);
 app.get('/login',user_login_get);
