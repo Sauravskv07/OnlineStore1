@@ -37,18 +37,17 @@ $(document).ready(()=>
     $("button").click(function()
     {
         console.log(this.id);
+        var productToBuy=JSON.stringify({itemBought:this.id});
+        console.log(productToBuy);
         $.ajax({
-            url: 'http://localhost:3001/BuyAProduct',
-            type: 'POST',
-            datatype: JSON,
-            data:{itemBought:this.id},
-            processData: false,
-         })
-        .done(function(data) 
-        {
-            console.log('added to your cart');
-        })
-        .fail(function() {alert("error");});        
+            dataType: 'json',
+            type: "POST",
+            url: "http://localhost:3001/BuyAProduct",
+            data: productToBuy,
+            contentType: 'application/json',
+            success: ()=>{console.log('done adding')},
+
+        });
     });
     window.onscroll=yscroll;
 });

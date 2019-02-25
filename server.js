@@ -15,17 +15,16 @@ const {body, validationResult}=require('express-validator/check');
 const {sanitizeBody}=require('express-validator/filter');
 var session=require('express-session');
 var signup_create_post=require('./routes/signUp.js').signup_create_post;
-
+var buy_a_product=require('./routes/buyProduct').buy_a_product;
 //app.set('port', 3004);
 app.set('views', '/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views') ;// The directory the templates are stored in
 app.set('view engine', 'pug');
 
-mongoose.connect('mongodb://localhost/Makingthecart');
+mongoose.connect('mongodb://localhost/Makingthecart',{ useNewUrlParser: true });
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use('/www', express.static(__dirname + '/www'));
 app.use('/public', express.static(__dirname + '/public'));
-
 app.use(logger('dev'));
 app.use(session(
             {   secret:'Mighty King',
@@ -156,6 +155,7 @@ app.get('/login',user_login_get);
 app.post('/login',user_login_post);
 app.get('/Products',viewProducts);
 app.get('/myCart',(req,res)=>{});
-
+app.post('/BuyAProduct',buy_a_product);
+//app.post('/BuyAProduct',(req,res)=>{console.log(req);});
 app.listen(3001);
 

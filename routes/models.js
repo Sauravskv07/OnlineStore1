@@ -19,7 +19,7 @@ let UserSchema=Schema(
 		  	return new mongoose.Types.ObjectId() 
 			} 
 		},
-	myProducts: [{ type: Schema.Types.ObjectId, ref: 'Products' }]
+	myCart: [{ type: Schema.Types.ObjectId, ref: 'Products' }]
 		  
 	});
 
