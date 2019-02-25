@@ -42,19 +42,24 @@ var signup_create_post=
     },
     (req,res)=>{
         upload.none();
-        console.log('hi reached here');
-        console.log(req.body.user_name);
+        //console.log('hi reached here');
+        //console.log(req.body.user_name);
         const errors=validationResult(req);
 		let user=new Users(
 			{
 				userName:req.body.user_name,
 				userPassword:req.body.user_password,
 				userEmail:req.body.user_email,
-				userDeliveryAddress:{StreetNumber:req.body.user_street_no,AddressLine1:req.body.user_address,CityName:req.body.user_city},
+                userDeliveryAddress:
+                {
+                    StreetNumber:req.body.user_street_no,
+                    AddressLine1:req.body.user_address,
+                    CityName:req.body.user_city
+                },
 				userPhoneNumber:req.body.user_phone
 			}
         );
-        console.log(user);
+        //console.log(user);
         if(!errors.isEmpty())
         {   
             console.log(errors);
@@ -64,16 +69,17 @@ var signup_create_post=
         }
         else
         {
-            console.log('Hi i reached here too');
+            //console.log('Hi i reached here too');
             Users.findOne({'userEmail':req.body.user_email}).exec((error,record)=>
             {
-                console.log('finding some record');
+                //console.log('finding some record');
                 if(error)
                 {
                     console.log('There has been error while checking previous users record');
                 }
                 if(record)
                 {
+
                     res.render('signUp.pug',{userInput:user,errors:['This email address already exist in the database']});
                 }
                 else
@@ -83,12 +89,12 @@ var signup_create_post=
                     {
                     if(error)
                         {
-                        console.error(error);
+                        //console.error(error);
                         process.exit(1);
                         }
                     else
                         {
-                        console.log('reached here too in the renderign block');
+                        //console.log('reached here too in the renderign block');
                         Products.find({},(err, docs)=> {
                                 //console.log(docs);
                             res.render('Products.pug',{arrayProducts: docs});
