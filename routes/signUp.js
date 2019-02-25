@@ -79,7 +79,7 @@ var signup_create_post=
                 }
                 if(record)
                 {
-
+                    console.log('i was here i don\'t know why');
                     res.render('signUp.pug',{userInput:user,errors:['This email address already exist in the database']});
                 }
                 else
