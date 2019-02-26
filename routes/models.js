@@ -11,7 +11,7 @@ let UserSchema=Schema(
 	userEmail:Email,
 	userDeliveryAddress:{StreetNumber:Number,AddressLine1:String,CityName:String},
 	userPhoneNumber:String,
-	userId: 
+	_id: 
 		{ 
 		type: ObjectId, 
 		default: function() 
@@ -31,7 +31,7 @@ let ProductsSchema=Schema(
 	itemQuantity:Number,
 	itemDescription:String,
 	itemImage: String,
-	itemId: 
+	_id: 
 		{ 
 		type: ObjectId, 
 		default: function() 

@@ -31,7 +31,7 @@ var signup_create_post=
         sanitizeBody('user_password').escape().trim(),
     (req,res,next)=>
     {
-        if(req.session.user && req.cookies.user_id)
+        if(req.session.user)
             {
                 res.redirect('/Products');
             }
@@ -79,7 +79,7 @@ var signup_create_post=
                 }
                 if(record)
                 {
-                    console.log('i was here i don\'t know why');
+                   // console.log('i was here i don\'t know why');
                     res.render('signUp.pug',{userInput:user,errors:['This email address already exist in the database']});
                 }
                 else
@@ -95,6 +95,7 @@ var signup_create_post=
                     else
                         {
                         //console.log('reached here too in the renderign block');
+                        console.log(results);
                         Products.find({},(err, docs)=> {
                                 //console.log(docs);
                             res.render('Products.pug',{arrayProducts: docs});
