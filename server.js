@@ -158,5 +158,5 @@ app.get('/Products',viewProducts);
 app.get('/myCart',my_cart);
 app.post('/BuyAProduct',buy_a_product);
 //app.post('/BuyAProduct',(req,res)=>{console.log(req);});
-app.listen(3001);
+app.listen(3000);
 

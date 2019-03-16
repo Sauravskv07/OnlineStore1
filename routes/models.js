@@ -44,8 +44,10 @@ ProductsSchema.method(
 	{
 	buy(address,callback)
 		{
-	this.itemQuantity--;
+	this.itemQuantity=this.itemQuantity -1;
+	this.save();
 	console.log('transaction completed and will be delivered at address :',address);
+	console.log('final count of the Quantity of items remaining =',this.itemQuantity);
 	callback();
 		}
 	});

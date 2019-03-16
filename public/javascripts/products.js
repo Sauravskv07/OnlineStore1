@@ -9,7 +9,7 @@ $(document).ready(()=>
         {
             console.log('reached here');
             $.ajax({
-                url: 'http://localhost:3001/Products',
+                url: 'http://localhost:3000/Products',
                 type: 'GET',
                 processData: false,
              })
@@ -20,7 +20,7 @@ $(document).ready(()=>
                     data.forEach((product)=>
                     {
                         appendedProducts=appendedProducts+"<div class=box>"
-                        var imageLocation="http://localhost:3001/public/assets/images/"+product.itemImage;
+                        var imageLocation="http://localhost:3000/public/assets/images/"+product.itemImage;
                         appendedProducts=appendedProducts+"<img src=\""+imageLocation+"\" > <div class=contents>";
                         var productInfo="<p>This is a basic pug file</p> <p>Name Of Product:"+  product.itemName+"</p> <p>Name Of Seller: "+product.sellerName+"</p> <p>Email of Seller: "+product.sellerEmail+"</p> <p> Product Description: "+product.itemDescription+"</p> <p>Item Quantity: "+product.itemQuantity+"</p>";
                         appendedProducts=appendedProducts+productInfo+"</div> </div>";
@@ -42,7 +42,7 @@ $(document).ready(()=>
         $.ajax({
             dataType: 'json',
             type: "POST",
-            url: "http://localhost:3001/BuyAProduct",
+            url: "http://localhost:3000/BuyAProduct",
             data: productToBuy,
             contentType: 'application/json',
             success: ()=>{console.log('done adding')},

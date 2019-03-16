@@ -9,7 +9,7 @@ html
         div(class="container" id="container")
             h1 Product of THE BITSIAN GROUP
             header
-                img.back_image(src="http://localhost:3001/www/index.jpeg")
+                img.back_image(src="http://localhost:3000/www/index.jpeg")
                 .header_content "A perfect place to sell your products or buy what others are selling. Whether you are shifting or you think your products still have life"
             for product in arrayProducts
                 //console.log(arrayProducts)
@@ -18,7 +18,7 @@ html
                     //-var type=product.itemImage.contentType
                     //console.log(product_image)
                     .image_cover
-                        -var imageLocation="http://localhost:3001/public/assets/images/"+product.itemImage
+                        -var imageLocation="http://localhost:3000/public/assets/images/"+product.itemImage
                         -var productId=product._id
                         img(src=imageLocation)    
                     .contents

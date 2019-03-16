@@ -1,4 +1,5 @@
 var Users=require('./models').Users;
+var Products=require('./models').Products;
 const mongoose=require('mongoose');
 
 module.exports.buy_a_product=[
@@ -23,5 +24,12 @@ module.exports.buy_a_product=[
                     console.log('readed here it means success')
                     console.log(success);
                 }
+            });
+        Products.findById({_id:mongoose.Types.ObjectId(itemBought)},(error,doc)=>
+            {
+                doc.buy(JSON.stringify(ActiveUser.userDeliveryAddress),()=>
+                {
+                        console.log("Transaction completed the final quantity remaining is ",doc.itemQuantity);
+                });
             });
     }];
