@@ -50,3 +50,8 @@ header img
 button{
     padding:20px;
 }
+a{
+    font-size: 1em;
+    text-align: center;
+    text-decoration-color: black;
+}

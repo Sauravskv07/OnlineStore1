@@ -8,11 +8,11 @@ html
         script(src="/public/javascripts/buyProduct.js")
     body
         h1 #{product.itemName}
-        div.col_1-2
+        div.col_12
             -var imageLocation="http://localhost:3000/public/assets/images/"+product.itemImage
             -var productId=product._id
             img(src=imageLocation class="Main_product_img")
-        div.col_1-2
+        div.col_12
             p() Name Of Seller:  #{product.sellerName}
             p() Email Of Seller:  #{product.sellerEmail}
             p() Product Description:  #{product.itemDescription}

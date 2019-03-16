@@ -1,6 +1,6 @@
 var Products=require('./models').Products;
 const mongoose=require('mongoose');
-var indProduct=(req,res)=>
+module.exports.indProduct=(req,res)=>
     {
         var id=req.params.productId
         console.log(id);
@@ -9,4 +9,3 @@ var indProduct=(req,res)=>
             res.render('Product.pug',{product:doc});
         });
     }
-module.exports=indProduct;
