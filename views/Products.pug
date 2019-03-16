@@ -13,22 +13,19 @@ html
                 .header_content "A perfect place to sell your products or buy what others are selling. Whether you are shifting or you think your products still have life"
             for product in arrayProducts
                 //console.log(arrayProducts)
-                div(class="box")
-                    //-var product_image= (product.itemImage.data).toString('base64')
-                    //-var type=product.itemImage.contentType
-                    //console.log(product_image)
-                    .image_cover
-                        -var imageLocation="http://localhost:3000/public/assets/images/"+product.itemImage
-                        -var productId=product._id
-                        img(src=imageLocation)    
-                    .contents
-                        p() This is a basic pug file
-                        p() Name Of Product:  #{product.itemName}
-                        p() Name Of Seller:  #{product.sellerName}
-                        p() Email Of Seller:  #{product.sellerEmail}
-                        p() Product Description:  #{product.itemDescription}
-                        p() Quantity Of Product#{product.itemQuantity}
-                        button(id=productId value="Add To Cart")
+                -var prodLink="http://localhost:3000/Product/"+product._id;
+                div(class="box" )
+                    a(href=prodLink)
+                        div.indProd
+                            //-var product_image= (product.itemImage.data).toString('base64')
+                            //-var type=product.itemImage.contentType
+                            //console.log(product_image)
+                            .image_cover
+                                -var imageLocation="http://localhost:3000/public/assets/images/"+product.itemImage
+                                -var productId=product._id
+                                img(src=imageLocation)    
+                            .contents
+                                p() #{product.itemName}
             else  
                 p There are no Products added till now.
             

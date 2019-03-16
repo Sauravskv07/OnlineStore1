@@ -16,6 +16,7 @@ const {sanitizeBody}=require('express-validator/filter');
 var session=require('express-session');
 var signup_create_post=require('./routes/signUp.js').signup_create_post;
 var buy_a_product=require('./routes/buyProduct').buy_a_product;
+var indProduct=require('.routes/product').indProduct;
 var my_cart=require('./routes/MyCart.js').my_cart;
 //app.set('port', 3004);
 app.set('views', '/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views') ;// The directory the templates are stored in
@@ -157,6 +158,7 @@ app.post('/login',user_login_post);
 app.get('/Products',viewProducts);
 app.get('/myCart',my_cart);
 app.post('/BuyAProduct',buy_a_product);
+app.get('/product/:productId',indProduct);
 //app.post('/BuyAProduct',(req,res)=>{console.log(req);});
 app.listen(3000);
 

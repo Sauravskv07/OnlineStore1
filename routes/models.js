@@ -45,7 +45,12 @@ ProductsSchema.method(
 	buy(address,callback)
 		{
 	this.itemQuantity=this.itemQuantity -1;
-	this.save();
+	this.save((error,results)=>{
+		if(error)
+		{console.log("Thee has been some errors while saving");}
+		else 
+			console.log(results);
+	});
 	console.log('transaction completed and will be delivered at address :',address);
 	console.log('final count of the Quantity of items remaining =',this.itemQuantity);
 	callback();
