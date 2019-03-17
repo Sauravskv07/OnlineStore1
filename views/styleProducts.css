@@ -10,6 +10,10 @@
     margin-right: auto;
     margin-left:auto;
 }
+img{
+    height: 40%;
+    overflow: hidden;
+}
 h1
     {
         text-align: center;

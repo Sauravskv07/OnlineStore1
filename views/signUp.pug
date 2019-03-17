@@ -4,7 +4,7 @@ html
         meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
     body
         h1 Sign UP
-        form(method='POST' action='' enctype="multipart/form-data" )
+        form(method='POST' action='http://localhost:3000/signup' enctype="multipart/form-data" )
             div
                 label(for="user_name") Name:
                 input#user_name.form-control(type='text', placeholder='Shah rukh, Rajesh etc.' name="user_name" value=(undefined===userInput ? '' : userInput.userName))

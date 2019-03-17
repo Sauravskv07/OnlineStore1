@@ -5,29 +5,10 @@ var pug=require('pug');
 
 function viewProducts(req,res){
     Products.find({},(err, docs)=> {
-        products=docs.slice(req.session.arrayIndex,(req.session.arrayIndex+9));
+        products=docs.slice(0,30);
         //console.log(docs);
-        if(req.session.arrayIndex===0)
-        {
-            req.session.arrayIndex=req.session.arrayIndex+9;
-            res.render('Products.pug',{arrayProducts: products});
-        }
-        else
-        {
-            if(products.length==0)
-            {
-                console.log('here');
-                res.send();
-            }
-            else
-            {
-                req.session.arrayIndex=req.session.arrayIndex+9;
-                res.send(products);                
-            }
-
-            
-        }
-
+        req.session.arrayIndex=30;
+        res.render('Products.pug',{arrayProducts: products});        
         });
 }
 module.exports.viewProducts=viewProducts;

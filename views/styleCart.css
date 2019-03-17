@@ -1,0 +1,21 @@
+body{
+    background-color: #eeee;
+}
+.box{
+    height: 10%;
+    margin-left:5%;
+    margin-right:5%;
+    width: 80%;
+    margin-bottom: 5%;
+}
+.image_cover img{
+    height:100px;
+    float:left;
+}
+.contents{
+    margin-left: 20%;
+}
+h1{
+    text-align: center;
+    margin-bottom: 10%;
+}

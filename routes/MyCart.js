@@ -9,6 +9,6 @@ module.exports.my_cart=(req,res)=>
     .exec(function (err, user) {
     if (err) return handleError(err)
     console.log('The user has % Product(s)', user.myCart.length);
-    res.send(JSON.stringify(user));
+    res.render('myCart.pug',{Me:user});
   })
 }

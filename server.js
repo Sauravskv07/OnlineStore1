@@ -18,6 +18,7 @@ var signup_create_post=require('./routes/signUp.js').signup_create_post;
 var buy_a_product=require('./routes/buyProduct').buy_a_product;
 var indProduct=require('./routes/product.js').indProduct;
 var my_cart=require('./routes/MyCart.js').my_cart;
+var loadMoreProducts=require('./routes/loadMoreProducts');
 //app.set('port', 3004);
 app.set('views', '/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views') ;// The directory the templates are stored in
 app.set('view engine', 'pug');
@@ -156,9 +157,19 @@ app.post('/signup',signup_create_post);
 app.get('/login',user_login_get);
 app.post('/login',user_login_post);
 app.get('/Products',viewProducts);
+app.get('/loadMoreProducts',loadMoreProducts);
 app.get('/myCart',my_cart);
 app.get('/BuyAProduct/:productId',buy_a_product);
 app.get('/product/:productId',indProduct);
+app.get('/clean',(req,res)=>{
+    Users.remove({}, function(err) { 
+        console.log('collection removed') 
+     });
+    Products.remove({}, function(err) { 
+        console.log('collection removed') 
+     });
+    res.redirect('/signup');
+})
 //app.post('/BuyAProduct',(req,res)=>{console.log(req);});
 app.listen(3000);
 
