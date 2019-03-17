@@ -157,7 +157,7 @@ app.get('/login',user_login_get);
 app.post('/login',user_login_post);
 app.get('/Products',viewProducts);
 app.get('/myCart',my_cart);
-app.post('/BuyAProduct',buy_a_product);
+app.get('/BuyAProduct/:productId',buy_a_product);
 app.get('/product/:productId',indProduct);
 //app.post('/BuyAProduct',(req,res)=>{console.log(req);});
 app.listen(3000);

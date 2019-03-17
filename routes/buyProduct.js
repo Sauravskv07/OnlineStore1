@@ -8,7 +8,7 @@ module.exports.buy_a_product=[
     {
         var ActiveUser=req.session.user;
         console.log(ActiveUser._id);
-        var itemBought=req.body.itemBought;
+        var itemBought=req.params.productId;
         console.log(itemBought);
         Users.findById({_id:mongoose.Types.ObjectId(ActiveUser._id)},(error,doc)=>{console.log('doc  ',doc)});
         Users.findOneAndUpdate(
@@ -16,20 +16,22 @@ module.exports.buy_a_product=[
             {$push:{myCart:mongoose.Types.ObjectId(itemBought)}},
             function (error, success) 
             {
-                console.log("inside this");
                 if (error) {
                     console.log('no such user found');
                     console.log(error);
-                } else {
+                }
+                else {
                     console.log('readed here it means success')
                     console.log(success);
                 }
-            });
-        Products.findById({_id:mongoose.Types.ObjectId(itemBought)},(error,doc)=>
-            {
-                doc.buy(JSON.stringify(ActiveUser.userDeliveryAddress),()=>
+                Products.findById({_id:mongoose.Types.ObjectId(itemBought)},(error,doc)=>
                 {
-                        console.log("Transaction completed the final quantity remaining is ",doc.itemQuantity);
+                    doc.buy(JSON.stringify(ActiveUser.userDeliveryAddress),()=>
+                    {
+                            res.redirect('/myCart');
+                    });
                 });
+
+
             });
     }];

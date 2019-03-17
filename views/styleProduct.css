@@ -1,9 +1,22 @@
-
-.col_12
-{
+.col_12 {
     width: 40%;
+    float: left;
     margin-left: 5%;
     margin-right: 5%;
+}
+.col_12 img{
+    width:100%;
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+/* Row Clear Float*/
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 body
 {
