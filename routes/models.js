@@ -43,7 +43,7 @@ let OrderSchema=Schema(
 	}
 );
 
-OrdersSchema.method(
+OrderSchema.method(
 	{
 	changeQuantity(newQuantity)
 	{

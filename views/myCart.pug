@@ -8,7 +8,7 @@ html
         div(class="container" id="container")
             h1 My Cart
             for order in arrayOfOrders
-                -var prodLink="http://localhost:3000/Product/"+order.p_id;
+                -var prodLink="http://localhost:3000/Product/"+order.p_id._id;
                 div(class="box" )
                     a(href=prodLink)
                         div.indProd
@@ -16,10 +16,10 @@ html
                             //-var type=product.itemImage.contentType
                             //console.log(product_image)
                             .image_cover
-                                -var imageLocation="http://localhost:3000/public/assets/images/"+order.itemImage
+                                -var imageLocation="http://localhost:3000/public/assets/images/"+order.p_id.itemImage
                                 img(src=imageLocation)    
                             .contents
-                                p() #{order.itemName}
+                                p() #{order.p_id.itemName}
                                 p #{order.order_quantity}
             else  
                 p There are no Products added till now.

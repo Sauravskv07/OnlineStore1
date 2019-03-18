@@ -27,13 +27,10 @@ module.exports.my_cart=(req,res)=>
     //   res.send(arrayofProducts);
     Orders.find().populate('p_id');
     Orders.find({c_id:mongoose.Types.ObjectId(req.session.user._id)}, function (err, orders) {
-      var opts = [{ path: 'p_id'}];
-      var promise = User.populate(users, opts);
-      promise.then(
-        console.log('done populating orders')
-      ).end(
-        res.render('myCart.pug',{arrayOfOrders:orders})
-      );
+      Orders.populate(orders,{path:'p_id'},(error,docs)=>{
+        console.log(docs);
+        res.render('myCart.pug',{arrayOfOrders:docs});
+      })
     })  
   }
 

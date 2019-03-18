@@ -10,6 +10,7 @@ const logger=require('morgan');
 const viewProducts=require('./routes/displayProducts').viewProducts;
 const app=express();
 var Products=require('./routes/models').Products;
+var Orders=require('./routes/models').Orders;
 var Users=require('./routes/models').Users;
 const {body, validationResult}=require('express-validator/check');
 const {sanitizeBody}=require('express-validator/filter');
@@ -159,7 +160,7 @@ app.post('/login',user_login_post);
 app.get('/Products',viewProducts);
 app.get('/loadMoreProducts',loadMoreProducts);
 app.get('/myCart',my_cart);
-app.get('/BuyAProduct/:productId',buy_a_product);
+app.post('/BuyAProduct/:productId',buy_a_product);
 app.get('/product/:productId',indProduct);
 app.get('/loadAProduct',(req,res)=>{
     Products.findById({_id:mongoose.Types.ObjectId(req.body._id)},(error,product)=>
@@ -174,6 +175,7 @@ app.get('/clean',(req,res)=>{
     Products.remove({}, function(err) { 
         console.log('collection removed') 
      });
+    Orders.remove({});
     res.redirect('/signup');
 })
 //app.post('/BuyAProduct',(req,res)=>{console.log(req);});
