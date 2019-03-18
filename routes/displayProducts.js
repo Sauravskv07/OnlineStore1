@@ -6,7 +6,6 @@ var pug=require('pug');
 function viewProducts(req,res){
     Products.find({},(err, docs)=> {
         products=docs.slice(0,30);
-        //console.log(docs);
         req.session.arrayIndex=30;
         res.render('Products.pug',{arrayProducts: products});        
         });

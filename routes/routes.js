@@ -13,9 +13,6 @@ function routes(app)
 			console.log(req.file.mimetype);
 			var product_image=fs.readFileSync("/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/public/assets/images/"+filename);	
 			product_image=new Buffer(product_image,'base64');
-			//console.log(product_image.toString());
-			//var product_image= new Buffer(product_image).toString('base64');
-			//console.log(new Buffer(product_image).toString('base64'));
 			let product=new Products(
 				{
 					sellerName:req.body.seller_name,

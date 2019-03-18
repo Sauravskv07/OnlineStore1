@@ -7,7 +7,6 @@ var multer = require('multer');
 const fs=require('fs');
 var upload = multer({ dest: './public/assets/images' })
 const logger=require('morgan');
-//const signup=require('./routes/signUp.js').signup_create_post;
 const viewProducts=require('./displayProducts').viewProducts;
 var Products=require('./models').Products;
 var Users=require('./models').Users;
@@ -42,8 +41,6 @@ var signup_create_post=
     },
     (req,res)=>{
         upload.none();
-        //console.log('hi reached here');
-        //console.log(req.body.user_name);
         const errors=validationResult(req);
 		let user=new Users(
 			{
@@ -59,7 +56,6 @@ var signup_create_post=
 				userPhoneNumber:req.body.user_phone
 			}
         );
-        //console.log(user);
         if(!errors.isEmpty())
         {   
             console.log(errors);
@@ -69,17 +65,15 @@ var signup_create_post=
         }
         else
         {
-            //console.log('Hi i reached here too');
             Users.findOne({'userEmail':req.body.user_email}).exec((error,record)=>
             {
-                //console.log('finding some record');
+
                 if(error)
                 {
                     console.log('There has been error while checking previous users record');
                 }
                 if(record)
                 {
-                   // console.log('i was here i don\'t know why');
                     res.render('signUp.pug',{userInput:user,errors:['This email address already exist in the database']});
                 }
                 else
@@ -89,15 +83,12 @@ var signup_create_post=
                     {
                     if(error)
                         {
-                        //console.error(error);
                         process.exit(1);
                         }
                     else
                         {
-                        //console.log('reached here too in the renderign block');
                         console.log(results);
                         Products.find({},(err, docs)=> {
-                                //console.log(docs);
                             res.render('Products.pug',{arrayProducts: docs});
                             });
                         }	

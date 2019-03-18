@@ -24,7 +24,6 @@ $(document).ready(()=>
                         appendedProducts=appendedProducts+"<img src=\""+imageLocation+"\" > <div class=contents>";
                         var productInfo=product.itemName
                         appendedProducts=appendedProducts+productInfo+"</div> </div>";
-                        //console.log(appendedProducts);
                         wrap.innerHTML+=appendedProducts;
     
                     });

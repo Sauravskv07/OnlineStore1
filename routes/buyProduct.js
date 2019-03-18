@@ -12,9 +12,7 @@ module.exports.buy_a_product=[
         console.log('inside buying the product');
         upload.none();
         var ActiveUser=req.session.user;
-        //console.log(ActiveUser._id);
         var itemBought=req.params.productId;
-        //console.log(itemBought);
         Users.findById({_id:mongoose.Types.ObjectId(ActiveUser._id)},(error,user)=>{
             Products.findById({_id:mongoose.Types.ObjectId(itemBought)},(error,product)=>
                 {
@@ -42,29 +40,4 @@ module.exports.buy_a_product=[
                 res.redirect('/myCart');
                 });
         });
-        // Users.findOneAndUpdate(
-        //     {_id:mongoose.Types.ObjectId(ActiveUser._id)},
-        //     {
-        //     $push:{myCart:{_id:mongoose.Types.ObjectId(itemBought),productQuantity:1}}},
-        //     function (error, success) 
-        //     {
-        //         if (error) {
-        //             console.log('no such user found');
-        //             console.log(error);
-        //         }
-        //         else {
-        //             console.log('readed here it means success')
-        //             console.log(success);
-        //         }
-        //         Products.findById({_id:mongoose.Types.ObjectId(itemBought)},(error,product)=>
-        //         {
-        //             product.buy(JSON.stringify(ActiveUser.userDeliveryAddress),()=>
-        //             {       
-        //                     res.redirect('/myCart');
-        //             });
-        //         });
-        //         Users.findById({_id:mongoose.Types.ObjectId(ActiveUser._id)},(error,doc)=>{console.log('user after transaction is complete is ',doc); });
-
-
-        //     });
     }];

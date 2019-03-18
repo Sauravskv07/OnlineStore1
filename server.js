@@ -6,7 +6,6 @@ var multer = require('multer');
 const fs=require('fs');
 var upload = multer({ dest: './public/assets/images' })
 const logger=require('morgan');
-//const signup=require('./routes/signUp.js').signup_create_post;
 const viewProducts=require('./routes/displayProducts').viewProducts;
 const app=express();
 var Products=require('./routes/models').Products;
@@ -112,11 +111,6 @@ app.post('/addToProducts',upload.single('input_image'),( req,res)=>
 {
 const filename=req.file.filename;
 console.log(req.file.mimetype);
-//var product_image=fs.readFileSync("./public/assets/images/"+filename);	
-//product_image=new Buffer(product_image,'base64');
-//console.log(product_image.toString());
-//var product_image= new Buffer(product_image).toString('base64');
-//console.log(new Buffer(product_image).toString('base64'));
 console.log(req.body.product_name);
 let product=new Products(
     {
@@ -139,7 +133,6 @@ product.save((error,results)=>
         {
         Products.find({},(err, docs)=> 
             {
-            //console.log(docs);
             res.render('Products.pug',{arrayProducts: docs});
             });
         }	
@@ -178,6 +171,5 @@ app.get('/clean',(req,res)=>{
     Orders.remove({});
     res.redirect('/signup');
 })
-//app.post('/BuyAProduct',(req,res)=>{console.log(req);});
 app.listen(3000);
 

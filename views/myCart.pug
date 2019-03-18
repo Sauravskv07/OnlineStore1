@@ -12,9 +12,6 @@ html
                 div(class="box" )
                     a(href=prodLink)
                         div.indProd
-                            //-var product_image= (product.itemImage.data).toString('base64')
-                            //-var type=product.itemImage.contentType
-                            //console.log(product_image)
                             .image_cover
                                 -var imageLocation="http://localhost:3000/public/assets/images/"+order.p_id.itemImage
                                 img(src=imageLocation)    

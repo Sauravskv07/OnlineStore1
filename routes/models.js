@@ -19,12 +19,6 @@ let UserSchema=Schema(
 		  	return new mongoose.Types.ObjectId() 
 			} 
 		},
-	// myCart: [
-	// 	{
-	// 		_id:{ type: Schema.Types.ObjectId, ref: 'Products' },
-	// 		productQuantity:Number
-	// 	}
-	// ]
 		  
 	});
 let OrderSchema=Schema(
