@@ -4,15 +4,11 @@ html
         meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
         style
             include styleCart.css
-        script(src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js")
-
     body
         div(class="container" id="container")
             h1 My Cart
-            -arrayProducts=Me.myCart;
-            for product in arrayProducts
-                //console.log(arrayProducts)
-                -var prodLink="http://localhost:3000/Product/"+product._id;
+            for order in arrayOfOrders
+                -var prodLink="http://localhost:3000/Product/"+order.p_id;
                 div(class="box" )
                     a(href=prodLink)
                         div.indProd
@@ -20,12 +16,11 @@ html
                             //-var type=product.itemImage.contentType
                             //console.log(product_image)
                             .image_cover
-                                -var imageLocation="http://localhost:3000/public/assets/images/"+product.itemImage
-                                -var productId=product._id
+                                -var imageLocation="http://localhost:3000/public/assets/images/"+order.itemImage
                                 img(src=imageLocation)    
                             .contents
-                                p() #{product.itemName}
-                                p #{product.itemQuantity}
+                                p() #{order.itemName}
+                                p #{order.order_quantity}
             else  
                 p There are no Products added till now.
             

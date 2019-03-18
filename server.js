@@ -161,6 +161,12 @@ app.get('/loadMoreProducts',loadMoreProducts);
 app.get('/myCart',my_cart);
 app.get('/BuyAProduct/:productId',buy_a_product);
 app.get('/product/:productId',indProduct);
+app.get('/loadAProduct',(req,res)=>{
+    Products.findById({_id:mongoose.Types.ObjectId(req.body._id)},(error,product)=>
+    {
+        res.send(product);
+    });
+});
 app.get('/clean',(req,res)=>{
     Users.remove({}, function(err) { 
         console.log('collection removed') 

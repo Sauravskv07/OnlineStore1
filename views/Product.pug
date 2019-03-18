@@ -18,5 +18,11 @@ html
                 p() Email Of Seller:  #{product.sellerEmail}
                 p() Product Description:  #{product.itemDescription}
                 p() Quantity Of Product#{product.itemQuantity}
-                a(href=("http://localhost:3000/BuyAProduct/"+productId))
-                    button(id=productId) Cart
+                form(method='POST' action=('http://localhost:3000/BuyAProduct/'+productId) enctype="multipart/form-data" )
+                    div
+                        label(for="item_quantity") Quantity:
+                            input#item_quantity.form-control(type='Number', name="item_quantity")
+                    div
+                        label(for='delivery_address') Delivery Address:
+                            input#delivery_address.form-control(type='text', name="delivery_address")
+                    button.btn.btn-primary(type='submit') Buy
