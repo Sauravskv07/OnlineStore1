@@ -21,6 +21,23 @@ let UserSchema=Schema(
 		},
 		  
 	});
+let SellerSchema=Schema(
+	{
+		sellerName:String,
+		sellerPassword:String,
+		sellerEmail:Email,
+		sellerAddress:{StringNumber:Number,AddressLine1:String,CityName:String},
+		_id:
+			{
+			type:ObjectId,
+			default:function()
+				{
+					return new mongoose.Types.ObjectId()
+				}
+			},
+		sellerPanNumber:Number,
+	}
+);
 let OrderSchema=Schema(
 	{
 		_id:{
@@ -62,8 +79,7 @@ OrderSchema.method(
 
 let ProductsSchema=Schema(
 	{
-	sellerName:String,
-	sellerEmail:Email,
+	seller:{type: Schema.Types.ObjectId, ref: 'Sellers'},
 	itemName:String,
 	itemQuantity:Number,
 	itemDescription:String,
@@ -98,11 +114,25 @@ ProductsSchema.method(
 		}
 		}
 	});
-
+ImageSchema=Schema(
+	{
+		owner:{	type: Schema.Types.ObjectId, ref: 'Users'},
+		fileName:String,
+		fileType:String,
+		_id:{
+			type:ObjectId,
+			default:function()
+			{
+				return mongoose.Types.ObjectId;
+			}
+		}
+	}
+);
+const Images=mongoose.model('Images',ImageSchema);
 const Products=mongoose.model('Products',ProductsSchema);
 const Users=mongoose.model('Users',UserSchema);
 const Orders=mongoose.model('Orders',OrderSchema);
 module.exports.Products=Products;
 module.exports.Users=Users;
 module.exports.Orders=Orders;
-
+module.exports.Images=Images;

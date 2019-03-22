@@ -1,18 +1,9 @@
-
-const express=require('express');
-const bodyParser=require('body-parser');
-const mongoose=require('mongoose');
-var pug=require('pug');
 var multer = require('multer');
-const fs=require('fs');
 var upload = multer({ dest: './public/assets/images' })
-const logger=require('morgan');
-const viewProducts=require('./displayProducts').viewProducts;
 var Products=require('./models').Products;
 var Users=require('./models').Users;
 const {body, validationResult}=require('express-validator/check');
 const {sanitizeBody}=require('express-validator/filter');
-var session=require('express-session')
 
 var signup_create_post=
 [
