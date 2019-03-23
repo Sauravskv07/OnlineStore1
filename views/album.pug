@@ -1,0 +1,10 @@
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Album
+    body
+        for image in arrayImages
+            -var imageLink="http://localhost:3000/public/assets/album/"+image.fileName
+            img(src=imageLink alt=image.imgDescription width='300px')

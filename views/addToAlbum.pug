@@ -1,0 +1,18 @@
+doctype html
+html
+    head
+        meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Add to album of the great bitsian group
+    body
+        h1 Select pictures to add to album
+        form(action = "http://localhost:3000/addToAlbum" method = "POST" target="_self" enctype="multipart/form-data")
+            .images
+                label(for="input_images") Select Images
+                input#input_images(type="file", name="input_images")
+            .description
+                label(for="description") Description
+                input#description(type="text", name="description")
+            .submit
+                input(type="submit", value="Submit")
+        

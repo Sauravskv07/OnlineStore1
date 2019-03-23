@@ -18,6 +18,8 @@ var signup_create_post=require('./routes/signUp.js').signup_create_post;
 var buy_a_product=require('./routes/buyProduct').buy_a_product;
 var indProduct=require('./routes/product.js').indProduct;
 var my_cart=require('./routes/MyCart.js').my_cart;
+var addToAlbum=require('./routes/addToAlbum');
+var Album=require('./routes/album').viewImages;
 var loadMoreProducts=require('./routes/loadMoreProducts');
 //app.set('port', 3004);
 app.set('views', '/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views') ;// The directory the templates are stored in
@@ -141,6 +143,11 @@ product.save((error,results)=>
 app.get('/addToProducts',(req,res)=>{
 res.sendFile('/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views/addToProducts.html');
 });
+app.get('/addToAlbum',(req,res)=>{
+    res.render('addToAlbum.pug');
+    });
+app.post('/addToAlbum',addToAlbum);
+app.get('/album',Album);
 app.get('/home',(req,res)=>{
     res.sendFile('/home/sauravskv/Desktop/Snippets_to_my_Dream/Makingthecart/views/home.html');
 });

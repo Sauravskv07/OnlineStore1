@@ -116,15 +116,20 @@ ProductsSchema.method(
 	});
 ImageSchema=Schema(
 	{
-		owner:{	type: Schema.Types.ObjectId, ref: 'Users'},
+		owner:{	type: mongoose.Types.ObjectId, ref: 'Users'},
 		fileName:String,
 		fileType:String,
+		imgDescription:String,
 		_id:{
 			type:ObjectId,
 			default:function()
 			{
-				return mongoose.Types.ObjectId;
+				return new mongoose.Types.ObjectId();
 			}
+		},
+		uploadDate:{
+			type:Date,
+			default:Date.now,
 		}
 	}
 );
